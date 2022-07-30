@@ -4,11 +4,15 @@ pillowcases
 
 Library that makes it possible to work in a concise, algebraic way with Python Imaging Library image objects.
 
-|pypi|
+|pypi| |readthedocs|
 
 .. |pypi| image:: https://badge.fury.io/py/pillowcases.svg
    :target: https://badge.fury.io/py/pillowcases
    :alt: PyPI version and link.
+
+.. |readthedocs| image:: https://readthedocs.org/projects/pillowcases/badge/?version=latest
+   :target: https://pillowcases.readthedocs.io/en/latest/?badge=latest
+   :alt: Read the Docs documentation status.
 
 Installation and Usage
 ----------------------
@@ -94,7 +98,7 @@ This library can be published as a `package on PyPI <https://pypi.org/project/pi
 
     python -m pip install .[publish]
 
-Ensure that the correct version number appears in ``pyproject.toml``. Create and push a tag for this version (replacing ``?.?.?`` with the version number)::
+Ensure that the correct version number appears in ``pyproject.toml``, and that any links in this README document to the Read the Docs documentation of this package (or its dependencies) have appropriate version numbers. Also ensure that the Read the Docs project for this library has an `automation rule <https://docs.readthedocs.io/en/stable/automation-rules.html>`__ that activates and sets as the default all tagged versions. Create and push a tag for this version (replacing ``?.?.?`` with the version number)::
 
     git tag ?.?.?
     git push origin ?.?.?
