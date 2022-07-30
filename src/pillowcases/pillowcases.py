@@ -50,4 +50,4 @@ class Image(PIL.Image.Image):
         return int.from_bytes(hashlib.sha256(self.tobytes()).digest(), 'little')
 
 if __name__ == "__main__":
-    doctest.testmod()
+    doctest.testmod() # pragma: no cover

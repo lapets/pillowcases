@@ -4,7 +4,7 @@ pillowcases
 
 Library that makes it possible to work in a concise, algebraic way with Python Imaging Library image objects.
 
-|pypi| |readthedocs|
+|pypi| |readthedocs| |actions| |coveralls|
 
 .. |pypi| image:: https://badge.fury.io/py/pillowcases.svg
    :target: https://badge.fury.io/py/pillowcases
@@ -13,6 +13,14 @@ Library that makes it possible to work in a concise, algebraic way with Python I
 .. |readthedocs| image:: https://readthedocs.org/projects/pillowcases/badge/?version=latest
    :target: https://pillowcases.readthedocs.io/en/latest/?badge=latest
    :alt: Read the Docs documentation status.
+
+.. |actions| image:: https://github.com/lapets/pillowcases/workflows/test-cover-docs/badge.svg
+   :target: https://github.com/lapets/pillowcases/actions/workflows/test-cover-docs.yml
+   :alt: GitHub Actions status.
+
+.. |coveralls| image:: https://coveralls.io/repos/github/lapets/pillowcases/badge.svg?branch=main
+   :target: https://coveralls.io/github/lapets/pillowcases?branch=main
+   :alt: Coveralls test coverage summary.
 
 Installation and Usage
 ----------------------

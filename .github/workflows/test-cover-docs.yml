@@ -1,0 +1,32 @@
+name: test-cover-docs
+on:
+  push
+jobs:
+  test_cover_docs:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ['3.7', '3.8', '3.9', '3.10']
+    name: "Python ${{ matrix.python-version }}"
+    steps:
+      - uses: actions/checkout@v2
+      - name: Install Python.
+        uses: actions/setup-python@v2
+        with:
+          python-version: ${{ matrix.python-version }}
+          architecture: x64
+      - name: Test module.
+        run: |
+          pip install -U .[test]
+          python -m pytest # Run tests.
+      - name: Publish coverage results.
+        run: |
+          pip install -U .[coveralls]
+          python -m coveralls --service=github # Submit to coveralls.
+        if: matrix.python-version == '3.8'
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Test auto-generation of documentation.
+        run: |
+          pip install -U .[docs]
+          cd docs && sphinx-apidoc -f -E --templatedir=_templates -o _source .. && make html && cd ..
