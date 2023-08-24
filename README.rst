@@ -24,18 +24,24 @@ Library that makes it possible to work in a concise, algebraic way with Python I
 
 Installation and Usage
 ----------------------
-This library is available as a `package on PyPI <https://pypi.org/project/pillowcases>`__::
+This library is available as a `package on PyPI <https://pypi.org/project/pillowcases>`__:
+
+.. code-block:: bash
 
     python -m pip install pillowcases
 
-The library can be imported in the usual way::
+The library can be imported in the usual way:
+
+.. code-block:: python
 
     import pillowcases
 
 Examples
 ^^^^^^^^
 
-To use this library, the ``PIL.Image`` module from the `pillow <https://pillow.readthedocs.io/en/stable>`__ library must be imported. If the ``pillowcases`` module is imported afterwards, the ``PIL.Image`` module's ``PIL.Image.Image`` class is redefined to refer to the ``pillowcases.Image`` class (which is itself derived from the ``PIL.Image.Image`` class).
+To use this library, the ``PIL.Image`` module from the `pillow <https://pillow.readthedocs.io/en/stable>`__ library must be imported. If the ``pillowcases`` module is imported afterwards, the ``PIL.Image`` module's ``PIL.Image.Image`` class is redefined to refer to the ``pillowcases.Image`` class (which is itself derived from the ``PIL.Image.Image`` class):
+
+.. code-block:: python
 
     >>> import PIL.Image
     >>> import pillowcases
@@ -49,7 +55,9 @@ To use this library, the ``PIL.Image`` module from the `pillow <https://pillow.r
 .. |dict| replace:: ``dict``
 .. _dict: https://docs.python.org/3/library/stdtypes.html#dict
 
-Because instances of ``pillowcases.Image`` are `hashable <https://docs.python.org/3/glossary.html#term-hashable>`__, they can be added as elements to |set|_ objects and can be used as keys in |dict|_ objects.
+Because instances of ``pillowcases.Image`` are `hashable <https://docs.python.org/3/glossary.html#term-hashable>`__, they can be added as elements to |set|_ objects and can be used as keys in |dict|_ objects:
+
+.. code-block:: python
 
     >>> j = PIL.Image.frombytes('RGBA', (2, 2), bytes([0]*16))
     >>> k = PIL.Image.frombytes('RGBA', (2, 2), bytes([255]*16))
@@ -59,7 +67,9 @@ Because instances of ``pillowcases.Image`` are `hashable <https://docs.python.or
     >>> d[k]
     2
 
-Compare the above to the default behavior of the ``PIL.Image.Image`` class, demonstrated below.
+Compare the above to the default behavior of the ``PIL.Image.Image`` class, demonstrated below:
+
+.. code-block:: python
 
     >>> from importlib import reload
     >>> PIL.Image = reload(PIL.Image)
@@ -73,13 +83,17 @@ Compare the above to the default behavior of the ``PIL.Image.Image`` class, demo
 
 Development
 -----------
-All installation and development dependencies are fully specified in ``pyproject.toml``. The ``project.optional-dependencies`` object is used to `specify optional requirements <https://peps.python.org/pep-0621>`__ for various development tasks. This makes it possible to specify additional options (such as ``docs``, ``lint``, and so on) when performing installation using `pip <https://pypi.org/project/pip>`__::
+All installation and development dependencies are fully specified in ``pyproject.toml``. The ``project.optional-dependencies`` object is used to `specify optional requirements <https://peps.python.org/pep-0621>`__ for various development tasks. This makes it possible to specify additional options (such as ``docs``, ``lint``, and so on) when performing installation using `pip <https://pypi.org/project/pip>`__:
+
+.. code-block:: bash
 
     python -m pip install .[docs,lint]
 
 Documentation
 ^^^^^^^^^^^^^
-The documentation can be generated automatically from the source files using `Sphinx <https://www.sphinx-doc.org>`__::
+The documentation can be generated automatically from the source files using `Sphinx <https://www.sphinx-doc.org>`__:
+
+.. code-block:: bash
 
     python -m pip install .[docs]
     cd docs
@@ -87,12 +101,16 @@ The documentation can be generated automatically from the source files using `Sp
 
 Testing and Conventions
 ^^^^^^^^^^^^^^^^^^^^^^^
-All unit tests are executed and their coverage is measured when using `pytest <https://docs.pytest.org>`__ (see the ``pyproject.toml`` file for configuration details)::
+All unit tests are executed and their coverage is measured when using `pytest <https://docs.pytest.org>`__ (see the ``pyproject.toml`` file for configuration details):
+
+.. code-block:: bash
 
     python -m pip install .[test]
     python -m pytest
 
-Style conventions are enforced using `Pylint <https://pylint.readthedocs.io>`__::
+Style conventions are enforced using `Pylint <https://pylint.readthedocs.io>`__:
+
+.. code-block:: bash
 
     python -m pip install .[lint]
     python -m pylint src/pillowcases
@@ -107,20 +125,28 @@ The version number format for this library and the changes to the library associ
 
 Publishing
 ^^^^^^^^^^
-This library can be published as a `package on PyPI <https://pypi.org/project/pillowcases>`__ by a package maintainer. First, install the dependencies required for packaging and publishing::
+This library can be published as a `package on PyPI <https://pypi.org/project/pillowcases>`__ by a package maintainer. First, install the dependencies required for packaging and publishing:
+
+.. code-block:: bash
 
     python -m pip install .[publish]
 
-Ensure that the correct version number appears in ``pyproject.toml``, and that any links in this README document to the Read the Docs documentation of this package (or its dependencies) have appropriate version numbers. Also ensure that the Read the Docs project for this library has an `automation rule <https://docs.readthedocs.io/en/stable/automation-rules.html>`__ that activates and sets as the default all tagged versions. Create and push a tag for this version (replacing ``?.?.?`` with the version number)::
+Ensure that the correct version number appears in ``pyproject.toml``, and that any links in this README document to the Read the Docs documentation of this package (or its dependencies) have appropriate version numbers. Also ensure that the Read the Docs project for this library has an `automation rule <https://docs.readthedocs.io/en/stable/automation-rules.html>`__ that activates and sets as the default all tagged versions. Create and push a tag for this version (replacing ``?.?.?`` with the version number):
+
+.. code-block:: bash
 
     git tag ?.?.?
     git push origin ?.?.?
 
-Remove any old build/distribution files. Then, package the source into a distribution archive::
+Remove any old build/distribution files. Then, package the source into a distribution archive:
+
+.. code-block:: bash
 
     rm -rf build dist src/*.egg-info
     python -m build --sdist --wheel .
 
-Finally, upload the package distribution archive to `PyPI <https://pypi.org>`__::
+Finally, upload the package distribution archive to `PyPI <https://pypi.org>`__:
+
+.. code-block:: bash
 
     python -m twine upload dist/*
