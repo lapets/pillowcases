@@ -49,5 +49,7 @@ class Image(PIL.Image.Image):
     def __hash__(self: Image) -> int:
         return int.from_bytes(hashlib.sha256(self.tobytes()).digest(), 'little')
 
+PIL.Image.Image = Image # Replace class definition with that of derived class.
+
 if __name__ == '__main__':
     doctest.testmod() # pragma: no cover

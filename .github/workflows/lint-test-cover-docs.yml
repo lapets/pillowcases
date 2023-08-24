@@ -20,6 +20,7 @@ jobs:
           pip install -U .[lint,test]
           python -m pylint pillowcases # Check against linting rules.
           python -m pytest # Run tests.
+          python src/pillowcases/pillowcases.py -v # Run tests via execution.
       - name: Publish coverage results.
         run: |
           pip install -U .[coveralls]

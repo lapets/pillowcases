@@ -108,6 +108,12 @@ All unit tests are executed and their coverage is measured when using `pytest <h
     python -m pip install .[test]
     python -m pytest
 
+Alternatively, all unit tests are included in the module itself and can be executed using `doctest <https://docs.python.org/3/library/doctest.html>`__:
+
+.. code-block:: bash
+
+    python src/pillowcases/pillowcases.py -v
+
 Style conventions are enforced using `Pylint <https://pylint.readthedocs.io>`__:
 
 .. code-block:: bash
