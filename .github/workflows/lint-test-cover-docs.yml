@@ -1,8 +1,8 @@
-name: test-cover-docs
+name: lint-test-cover-docs
 on:
   push
 jobs:
-  test_cover_docs:
+  lint_test_cover_docs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -15,9 +15,10 @@ jobs:
         with:
           python-version: ${{ matrix.python-version }}
           architecture: x64
-      - name: Test module.
+      - name: Lint and test module.
         run: |
-          pip install -U .[test]
+          pip install -U .[lint,test]
+          python -m pylint pillowcases # Check against linting rules.
           python -m pytest # Run tests.
       - name: Publish coverage results.
         run: |

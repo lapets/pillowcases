@@ -49,5 +49,5 @@ class Image(PIL.Image.Image):
     def __hash__(self: Image) -> int:
         return int.from_bytes(hashlib.sha256(self.tobytes()).digest(), 'little')
 
-if __name__ == "__main__":
+if __name__ == '__main__':
     doctest.testmod() # pragma: no cover
